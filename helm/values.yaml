@@ -1,0 +1,16 @@
+# Default values for foggykitchen hello-world.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# OCI Load Balancer configuration for K8S Service
+loadBalancer:
+  lbShape: flexible
+  lbMinShape: 10
+  lbMaxShape: 100
+  lbListenerPort: 80
+
+# POD spec
+pod:
+  numberOfNginxReplicas: 1
+  initContainerImage: nginx
+  ocirSecret: []
