@@ -12,5 +12,11 @@ loadBalancer:
 # POD spec
 pod:
   numberOfNginxReplicas: 1
-  initContainerImage: nginx
-  ocirSecret: []
+  imagePullSecrets: []
+
+# Image 
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""

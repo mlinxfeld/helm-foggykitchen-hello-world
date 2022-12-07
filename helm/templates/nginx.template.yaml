@@ -14,16 +14,14 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: {{ .Values.pod.initContainerImage }}
-        imagePullPolicy: Always
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: 80
         resources:
           requests:
             memory: "500Mi"
-      {{- with .Values.pod.ocirSecret }}
+      {{- with .Values.pod.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      ${ is_arm_node_shape ? "nodeSelector:" : "" }
-        ${ is_arm_node_shape ? "kubernetes.io/arch: arm64" : "" }
