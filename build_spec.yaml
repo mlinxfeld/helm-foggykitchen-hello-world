@@ -36,7 +36,7 @@ steps:
     timeoutInSeconds: 1200
     name: "Helm Build"
     command: |
-      cd ${OCI_WORKSPACE_DIR}/helm-foggykitchen-hello-world/helm/
+      cd ${OCI_WORKSPACE_DIR}/helm-foggykitchen-hello-world/helm/helm-foggykitchen-hello-world-chart
       export BUILDRUN_HASH=${BUILDRUN_HASH}
       originalChartfile="Chart.yaml"
       tmpChartfile=$(mktemp)

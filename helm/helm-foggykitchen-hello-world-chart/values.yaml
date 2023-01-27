@@ -1,4 +1,4 @@
-# Default values for foggykitchen hello-world.
+# Default values for helm foggykitchen hello-world chart.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
