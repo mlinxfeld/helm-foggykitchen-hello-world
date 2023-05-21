@@ -21,6 +21,6 @@ COPY ./src/img /usr/share/nginx/html/img
 # Expose port 80
 EXPOSE 80
 
-# Start nginx
+# Start nginx in container
 CMD nginx -g "daemon off;"
 
