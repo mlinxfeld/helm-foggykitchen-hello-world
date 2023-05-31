@@ -32,21 +32,6 @@ steps:
       cd ${OCI_WORKSPACE_DIR}/helm-foggykitchen-hello-world
       docker build --pull --rm -t foggykitchen-hello-world .
  
-  - type: Command
-    timeoutInSeconds: 1200
-    name: "Helm Build"
-    command: |
-      cd ${OCI_WORKSPACE_DIR}/helm-foggykitchen-hello-world/helm/helm-foggykitchen-hello-world-chart
-      export BUILDRUN_HASH=${BUILDRUN_HASH}
-      originalChartfile="Chart.yaml"
-      tmpChartfile=$(mktemp)
-      cp --attributes-only --preserve $originalChartfile $tmpChartfile
-      cat $originalChartfile | envsubst > $tmpChartfile && mv $tmpChartfile $originalChartfile
-      cat Chart.yaml
-      helm package .
-      helm registry login ${HELM_REPO} -u ${HELM_REPO_USER} -p ${USER_AUTH_TOKEN}
-      helm push *.tgz ${HELM_REPO_URL}
-
 outputArtifacts:
   - name: APPLICATION_DOCKER_IMAGE
     type: DOCKER_IMAGE
